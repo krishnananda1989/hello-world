@@ -22,7 +22,7 @@ pipeline {
         stage('Deploy To Tomcat') {
             steps {
                 // Get some code from a GitHub repository
-                deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://34.125.33.11:8080/')], contextPath: null, war: 'webapp/target/webapp.war'
+                deploy adapters: [tomcat9(credentialsId: 'cec430c9-7393-405f-aa31-0616664ad08b', path: '', url: 'http://34.125.33.11:8080/')], contextPath: null, war: 'webapp/target/webapp.war'
             }
         }
     }
