@@ -31,7 +31,7 @@
     <p>Already have an account? <a href="#">Sign in</a>.</p>
   </div>
 
-   <h1> Krishna deployed 1st CICD  DevOps project </h1>
+   <h1> Krishna deployed 1st CICD PipeLine DevOps project </h1>
 
   
 </form>
