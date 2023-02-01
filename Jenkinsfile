@@ -13,6 +13,12 @@ pipeline {
                 git 'https://github.com/krishnananda1989/hello-world.git'
             }
         }
+        stage('Maven Build') {
+            steps {
+                // Get some code from a GitHub repository
+                sh 'mvn install package'
+            }
+        }
         stage('Docker Build') {
             steps {
                 // Get some code from a GitHub repository
