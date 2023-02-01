@@ -13,17 +13,23 @@ pipeline {
                 git 'https://github.com/krishnananda1989/hello-world.git'
             }
         }
-        stage('Maven Build') {
+        stage('Docker Build') {
             steps {
                 // Get some code from a GitHub repository
-                sh 'mvn install package'
+                sh 'sudo docker build -t krishna_parida .'
             }
         }
-        stage('Deploy To Tomcat') {
+        stage('Docker run') {
             steps {
                 // Get some code from a GitHub repository
-                deploy adapters: [tomcat9(credentialsId: 'cb60f3f4-9843-4b55-9027-65323c079e00', path: '', url: 'http://34.125.136.16:8080/')], contextPath: null, war: 'webapp/target/webapp.war'
+                sh 'sudo docker run -itd -p 8080:8080 krishna_parida'
             }
         }
+//        stage('Deploy To Tomcat') {
+//            steps {
+                // Get some code from a GitHub repository
+//                deploy adapters: [tomcat9(credentialsId: 'cb60f3f4-9843-4b55-9027-65323c079e00', path: '', url: 'http://34.125.136.16:8080/')], contextPath: null, war: 'webapp/target/webapp.war'
+//            }
+//        }
     }
 }
