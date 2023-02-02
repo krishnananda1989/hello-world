@@ -28,7 +28,9 @@ pipeline {
         stage('Docker run') {
             steps {
                 // Get some code from a GitHub repository
-                sh 'sudo docker run -itd -p 8081:8080 krishna_parida'
+                sh 'sudo docker stop Krishnap'
+                sh 'sudo docker rm Krishnap'
+                sh 'sudo docker run -itd -p 8081:8080 --name Krishnap krishna_parida'
             }
         }
 //        stage('Deploy To Tomcat') {
