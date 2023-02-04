@@ -22,7 +22,17 @@ pipeline {
         stage('Docker Build') {
             steps {
                 // Get some code from a GitHub repository
-                sh 'sudo docker build -t krishna_parida .'
+                sh 'sudo docker build -t krishnaparida/krishna:${BUILD_NUMBER} .'
+            }
+        }
+        stage('Docker Push to Docker Hub') {
+            environment{
+                krishnapwd = credentials('krishnaparida_pwd')
+            }
+            steps {
+                // Get some code from a GitHub repository
+                sh 'sudo docker login -u krishnaparida -p ${krishnapwd}'
+                sh 'sudo docker push krishnaparida/krishna:${BUILD_NUMBER}'
             }
         }
         stage('Docker run') {
@@ -30,7 +40,7 @@ pipeline {
                 // Get some code from a GitHub repository
                 sh 'sudo docker stop Krishnap'
                 sh 'sudo docker rm Krishnap'
-                sh 'sudo docker run -itd -p 8081:8080 --name Krishnap krishna_parida'
+                sh 'sudo docker run -itd -p 8081:8080 --name Krishnap krishnaparida/krishna:${BUILD_NUMBER}'
             }
         }
 //        stage('Deploy To Tomcat') {
