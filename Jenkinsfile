@@ -26,12 +26,13 @@ pipeline {
             }
         }
         stage('Docker Push to Docker Hub') {
-            environment{
-                krishnapwd = credentials('krishnaparida_pwd')
-            }
+//            environment{
+//                krishnapwd = credentials('krishnaparida_pwd')
+//            }
             steps {
                 // Get some code from a GitHub repository
-                sh 'sudo docker login -u krishnaparida -p ${krishnapwd}'
+//                sh 'sudo docker login -u krishnaparida -p ${krishnapwd}'
+                sh 'sudo docker login -u krishnaparida -p iamthedude1989'
                 sh 'sudo docker push krishnaparida/krishna:${BUILD_NUMBER}'
             }
         }
