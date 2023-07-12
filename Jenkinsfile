@@ -32,7 +32,7 @@ pipeline {
             steps {
                 // Get some code from a GitHub repository
 //                sh 'sudo docker login -u krishnaparida -p ${krishnapwd}'
-                sh 'sudo docker login -u krishnaparida -p iamthedude1989'
+                sh 'sudo docker login -u krishnaparida -p pwd'
                 sh 'sudo docker push krishnaparida/krishna:${BUILD_NUMBER}'
             }
         }
